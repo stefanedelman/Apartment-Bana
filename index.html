@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO and Page Information -->
+    <title>Apartment Bana - Central Belgrade Serene Getaway</title>
+    <meta name="description" content="Discover Apartment Bana, your charming and peaceful rental in the heart of Belgrade center. Perfect for exploring the city's vibrant life and historic sites. Book your stay!">
+    <meta name="keywords" content="Apartment Bana, Belgrade apartment, central Belgrade, Belgrade accommodation, Belgrade rental, Airbnb Belgrade, Serbia, city center apartment, travel Belgrade, short-term rental Belgrade">
+    <meta name="author" content="Apartment Bana">
+    <link rel="canonical" href="YOUR_WEBSITE_URL_HERE"> <!-- IMPORTANT: Update when live -->
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph Meta Tags (for Facebook, LinkedIn, etc.) -->
+    <meta property="og:title" content="Apartment Bana - Your Serene Getaway in Central Belgrade">
+    <meta property="og:description" content="Experience the best of Belgrade from Apartment Bana, a cozy and tranquil retreat located right in the city center.">
+    <meta property="og:image" content="apartment_bana_logo.png"> <!-- IMPORTANT: Use absolute URL when live, e.g., https://yourdomain.com/apartment_bana_logo.png -->
+    <meta property="og:url" content="YOUR_WEBSITE_URL_HERE"> <!-- IMPORTANT: Update when live -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Apartment Bana">
+
+    <link rel="icon" href="favicon.ico" sizes="any" style="border-radius: 50%;">
+
+
+    <meta name="theme-color" content="#ADC9A8"> 
+
+    <style>
+
+        :root {
+            --bg-cream: #FBF5E8; 
+            --text-dark-green: #3A5F5F; 
+            --light-green-tree: #ADC9A8; 
+            --light-green-grass: #D5E0C8; 
+            --path-beige: #EAE0CC; 
+            --flower-orange: #FBC186; 
+            --tree-trunk: #C7A185;
+            --soft-shadow: rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            background-color: var(--bg-cream);
+            color: var(--text-dark-green);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+
+
+        header {
+            background-color: var(--light-green-grass);
+            padding: 20px 0;
+            text-align: center;
+            border-bottom: 3px solid var(--light-green-tree);
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 10px;
+        }
+
+        .logo-img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 3px solid var(--bg-cream);
+            box-shadow: 0 2px 5px var(--soft-shadow);
+        }
+
+        header h1 {
+            font-size: 2.8em;
+            color: var(--text-dark-green);
+            font-weight: normal;
+        }
+        
+        header p.tagline {
+            font-family: 'Arial', sans-serif;
+            font-style: italic;
+            color: var(--text-dark-green);
+            opacity: 0.8;
+            font-size: 1.1em;
+        }
+
+        main {
+            flex-grow: 1;
+        }
+
+        section {
+            padding: 40px 0;
+            border-bottom: 1px dashed var(--light-green-tree);
+        }
+        section:last-of-type {
+            border-bottom: none;
+        }
+
+        h2 {
+            font-size: 2em;
+            color: var(--text-dark-green);
+            margin-bottom: 20px;
+            text-align: center;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background-color: var(--flower-orange);
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        p, li {
+            font-family: 'Arial', sans-serif;
+            color: #555;
+            margin-bottom: 15px;
+            font-size: 1.1em;
+        }
+
+        ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        ul li::before {
+            content: "🌿";
+            margin-right: 10px;
+            color: var(--light-green-tree);
+        }
+
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            border: 2px solid var(--path-beige);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+        .gallery-item img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px var(--soft-shadow);
+        }
+
+ 
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.8);
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            margin: auto;
+            display: block;
+            max-width: 80%;
+            max-height: 80%;
+            border-radius: 5px;
+        }
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+        .close-modal:hover,
+        .close-modal:focus {
+            color: var(--flower-orange);
+            text-decoration: none;
+        }
+
+
+        .booking-button {
+            display: inline-block;
+            background-color: var(--flower-orange);
+            color: white;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 25px;
+            font-family: 'Arial', sans-serif;
+            font-weight: bold;
+            font-size: 1.1em;
+            text-align: center;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            margin-top: 20px;
+            box-shadow: 0 2px 5px var(--soft-shadow);
+        }
+        .booking-button:hover {
+            background-color: #EAA76C;
+            transform: translateY(-2px);
+        }
+
+
+        footer {
+            background-color: var(--light-green-grass);
+            color: var(--text-dark-green);
+            text-align: center;
+            padding: 20px 0;
+            margin-top: auto;
+            border-top: 3px solid var(--light-green-tree);
+        }
+        footer p {
+            margin-bottom: 0;
+            font-family: 'Arial', sans-serif;
+        }
+
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.2em;
+            }
+            .logo-container {
+                flex-direction: column;
+            }
+            .logo-img {
+                width: 80px;
+                height: 80px;
+            }
+            h2 {
+                font-size: 1.8em;
+            }
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            }
+        }
+         @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.8em;
+            }
+            .container {
+                width: 95%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <div class="logo-container">
+                <img src="apartment_bana_logo.png" alt="Apartment Bana Logo - Central Belgrade Accommodation" class="logo-img">
+                <h1>Apartment Bana</h1>
+            </div>
+            <p class="tagline">Your peaceful retreat in the vibrant heart of Belgrade Center.</p>
+        </div>
+    </header>
+
+    <main>
+        <section id="welcome">
+            <div class="container">
+                <h2>Welcome to Your Belgrade Center Haven</h2>
+                <p>Nestled right in the bustling center of Belgrade, Apartment Bana offers a unique blend of tranquil escape and city excitement. Enjoy the convenience of being steps away from Belgrade's iconic landmarks, vibrant cafes, and cultural hotspots, while retreating to a serene space that feels like home. Whether you're here for business, leisure, or to soak in the rich history of Belgrade, our apartment is the perfect base for your memorable stay.</p>
+                <p>We've poured our heart into creating a cozy and inviting atmosphere, reflecting the natural beauty suggested by our name, right in the urban core of Belgrade. We look forward to welcoming you to Apartment Bana!</p>
+            </div>
+        </section>
+
+        <section id="about">
+            <div class="container">
+                <h2>About Apartment Bana in Central Belgrade</h2>
+                <p>Apartment Bana is a charming 1-bedroom apartment, perfectly situated in the center of Belgrade, ideal for solo travelers, couples and small families looking to explore the city. It features:</p>
+                <ul>
+                    <li>A comfortable queen-sized bed with fresh linens for a restful night's sleep in central Belgrade.</li>
+                    <li>A fully equipped kitchen, perfect for preparing meals after a day of sightseeing.</li>
+                    <li>A cozy living area with a TV and comfortable seating to relax.</li>
+                    <li>A private bathroom with a walk-in shower and complimentary toiletries.</li>
+                    <li>Speedy Wi-Fi access to stay connected.</li>
+                    <li>A Private balcony with garden views</li>
+                    <li>Quiet despite central location</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="gallery">
+            <div class="container">
+                <h2>Photo Gallery: Your Belgrade Apartment</h2>
+                <p>Take a peek inside Apartment Bana and imagine your stay in central Belgrade.</p>
+                <div class="gallery-grid">
+                    <div class="gallery-item">
+                        <img src="slike s bana/Dnevna/dnevna1.avif" alt="Living Area of Apartment Bana, Belgrade" data-full="slike s bana/Dnevna/dnevna1.avif">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="slike s bana/Spavaca/Spavaca1.avif" alt="Comfortable Bedroom in Central Belgrade Apartment" data-full="slike s bana/Spavaca/Spavaca1.avif">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="slike s bana/Kuhinja/Kuhinja1.avif" alt="Kitchen in Apartment Bana, Belgrade Center" data-full="slike s bana/Kuhinja/Kuhinja1.avif">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="slike s bana/Bathroom/Bathroom1.avif" alt="Modern Bathroom at Apartment Bana" data-full="slike s bana/Bathroom/Bathroom1.avif">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="slike s bana/Balcony/Balcony1.avif" alt="View from or near Apartment Bana, Belgrade" data-full="slike s bana/Balcony/Balcony1.avif">
+                    </div>
+                     <div class="gallery-item">
+                        <img src="slike s bana/Dining Area/Dining2.avif" alt="Dining area" data-full="slike s bana/Dining Area/Dining2.avif">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div id="imageModal" class="modal">
+            <span class="close-modal">×</span>
+            <img class="modal-content" id="modalImage">
+        </div>
+
+        <section id="amenities">
+            <div class="container">
+                <h2>Amenities at Your Belgrade Center Stay</h2>
+                 <ul>
+                    <li>High-Speed Wi-Fi</li>
+                    <li>Fully Equipped Kitchen (pots, pans, dishes, cutlery)</li>
+                    <li>Coffee maker & Tea kettle</li>
+                    <li>Refrigerator Oven</li>
+                    <li>Hair dryer</li>
+                    <li>Iron</li>
+                    <li>Fresh towels & Bed linens</li>
+                    <li>Complimentary toiletries (Toilet Paper, Soap)</li>
+                    <li>Air Conditioning</li>
+                    <li>Prime central Belgrade location</li>
+                </ul>
+            </div>
+        </section>
+        
+        <section id="location">
+            <div class="container">
+                <h2>Unbeatable Location: Belgrade City Center</h2>
+                <p>Apartment Bana boasts an unparalleled location right in the heart of Belgrade, Serbia. Step out and find yourself amidst the city's main attractions, including Knez Mihailova Street, Kalemegdan Fortress, Republic Square, and the vibrant Skadarlija bohemian quarter, all within easy walking distance.</p>
+                <p>The neighborhood is a lively hub of cafes, renowned Belgrade restaurants, boutique shops, and cultural institutions. Excellent public transport links are readily available, making it effortless to explore all corners of Belgrade from your central base at Apartment Bana.</p>
+                <div style="width:100%; height:500px; background-color: var(--path-beige); display:flex; align-items:center; justify-content:center; border-radius: 8px; border: 2px solid var(--light-green-tree); text-align: center;">
+                    <iframe style="width: 100%; height: 100%; border-radius: 8px;" src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d8372.282073500457!2d20.458272267118698!3d44.821409550038496!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zNDTCsDQ5JzE1LjYiTiAyMMKwMjcnNDEuOSJF!5e0!3m2!1sen!2srs!4v1746873417304!5m2!1sen!2srs" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </section>
+
+        <section id="booking">
+            <div class="container" style="text-align: center;">
+                <h2>Book Your Central Belgrade Adventure!</h2>
+                <p>Ready to experience the charm of Belgrade from the comfort of Apartment Bana? Click the button below to check availability on Airbnb and secure your stay in the city center.</p>
+                <a href="https://airbnb.com/h/apartmentbana" class="booking-button" target="_blank">Book Apartment Bana on Airbnb</a>
+                <p style="margin-top: 20px;">Have questions about our central Belgrade apartment? Feel free to <a href="mailto:apartmentbana1@gmail.com" style="color: var(--text-dark-green);">contact us</a>!</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>© <span id="currentYear"></span> Apartment Bana, Belgrade Center. All Rights Reserved.</p>
+            <p>Your serene accommodation in the heart of Belgrade.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Set current year in footer
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        // Image Gallery Modal
+        const modal = document.getElementById('imageModal');
+        const modalImg = document.getElementById('modalImage');
+        const galleryImages = document.querySelectorAll('.gallery-item img');
+        const closeModal = document.querySelector('.close-modal');
+
+        galleryImages.forEach(img => {
+            img.onclick = function() {
+                modal.style.display = "flex";
+                modalImg.src = this.dataset.full || this.src;
+                modalImg.alt = this.alt;
+            }
+        });
+
+        closeModal.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        modal.onclick = function(event) {
+            if (event.target === modal) {
+                modal.style.display = "none";
+            }
+        }
+        
+        document.addEventListener('keydown', function(event) {
+            if (event.key === "Escape" && modal.style.display === "flex") {
+                modal.style.display = "none";
+            }
+        });
+    </script>
+
+</body>
+</html>
